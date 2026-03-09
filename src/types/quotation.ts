@@ -39,8 +39,11 @@ export interface QuotationData {
   // Add-ons
   addOns: AddOnItem[];
 
-  // Amount in words
+  // Amount in words (auto-calculated)
   amountInWords: string;
+
+  // QR heading
+  qrHeading: string;
 
   // Special Notes
   specialNotes: string[];
