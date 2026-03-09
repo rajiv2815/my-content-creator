@@ -25,15 +25,24 @@ const Index = () => {
 
   const handleDownloadPDF = async () => {
     if (!printRef.current) return;
+
     const html2pdf = (await import("html2pdf.js")).default;
     const opt = {
       margin: 0,
       filename: `Quotation_${data.refNo}.pdf`,
       image: { type: "jpeg" as const, quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        scrollY: 0,
+      },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" as const },
-      pagebreak: { mode: ["css", "legacy"] },
+      pagebreak: {
+        mode: ["css", "avoid-all"],
+        before: ".pdf-page-break-before",
+      },
     };
+
     html2pdf().set(opt).from(printRef.current).save();
   };
 
@@ -63,9 +72,12 @@ const Index = () => {
 
         <div className="flex-1 overflow-auto p-6 flex flex-col items-center gap-0 bg-muted/50">
           <div ref={printRef}>
-            <QuotationPage1 data={data} />
-            <div className="html2pdf__page-break" style={{ margin: 0, padding: 0 }} />
-            <QuotationPage2 data={data} />
+            <div className="pdf-page">
+              <QuotationPage1 data={data} />
+            </div>
+            <div className="pdf-page pdf-page-break-before">
+              <QuotationPage2 data={data} />
+            </div>
           </div>
         </div>
       </div>
