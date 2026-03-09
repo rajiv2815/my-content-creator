@@ -104,6 +104,14 @@ const AdminPanel = ({ data, onChange }: Props) => {
     update({ addOns });
   };
 
+  const addAddOn = () => {
+    update({ addOns: [...data.addOns, { srNo: data.addOns.length + 1, name: "", price: "", checked: false }] });
+  };
+
+  const removeAddOn = (i: number) => {
+    update({ addOns: data.addOns.filter((_, idx) => idx !== i) });
+  };
+
   return (
     <div className="h-full overflow-y-auto bg-card p-4" style={{ maxHeight: "100vh" }}>
       <h2 className="text-lg font-bold mb-4 text-foreground">Admin Panel</h2>
@@ -173,7 +181,10 @@ const AdminPanel = ({ data, onChange }: Props) => {
           </Section>
 
           <Section title="Amount">
-            <Field label="Amount in Words" value={data.amountInWords} onChange={(v) => update({ amountInWords: v })} />
+            <div>
+              <Label className="text-xs text-muted-foreground">Amount in Words (Auto)</Label>
+              <Input value={data.amountInWords} disabled className="h-8 text-sm bg-muted" />
+            </div>
             <Field label="GST %" value={String(data.gstPercent)} onChange={(v) => update({ gstPercent: Number(v) || 0 })} />
           </Section>
         </TabsContent>
@@ -205,8 +216,10 @@ const AdminPanel = ({ data, onChange }: Props) => {
               <div key={i} className="flex gap-2 items-center">
                 <Input value={a.name} onChange={(e) => updateAddOn(i, "name", e.target.value)} className="h-7 text-xs flex-1" />
                 <Input value={a.price} onChange={(e) => updateAddOn(i, "price", e.target.value)} className="h-7 text-xs w-24" />
+                <Button size="icon" variant="ghost" className="h-7 w-7" onClick={() => removeAddOn(i)}><Trash2 size={12} /></Button>
               </div>
             ))}
+            <Button size="sm" variant="outline" className="w-full h-7 text-xs" onClick={addAddOn}><Plus size={12} className="mr-1" />Add Add-On</Button>
           </Section>
         </TabsContent>
 
@@ -220,6 +233,10 @@ const AdminPanel = ({ data, onChange }: Props) => {
             ))}
           </Section>
 
+          <Section title="QR Section">
+            <Field label="QR Heading" value={data.qrHeading} onChange={(v) => update({ qrHeading: v })} />
+          </Section>
+
           <Section title="Banking Details">
             <Field label="Bank Name" value={data.bankName} onChange={(v) => update({ bankName: v })} />
             <Field label="Pay To" value={data.payTo} onChange={(v) => update({ payTo: v })} />
@@ -229,10 +246,6 @@ const AdminPanel = ({ data, onChange }: Props) => {
             <Field label="GST" value={data.gst} onChange={(v) => update({ gst: v })} />
             <Field label="PAN" value={data.pan} onChange={(v) => update({ pan: v })} />
             <Field label="UPI ID" value={data.upiId} onChange={(v) => update({ upiId: v })} />
-            <div>
-              <Label className="text-xs text-muted-foreground">Bank Logo</Label>
-              <Button size="sm" variant="outline" className="w-full h-8 text-xs" onClick={() => handleImageUpload("bankLogo")}>Upload Bank Logo</Button>
-            </div>
             <div>
               <Label className="text-xs text-muted-foreground">QR Code</Label>
               <Button size="sm" variant="outline" className="w-full h-8 text-xs" onClick={() => handleImageUpload("qrCodeUrl")}>Upload QR Code</Button>

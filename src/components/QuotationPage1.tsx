@@ -1,4 +1,4 @@
-import { QuotationData } from "@/types/quotation";
+import { QuotationData, AddOnItem } from "@/types/quotation";
 
 interface Props {
   data: QuotationData;
@@ -12,6 +12,22 @@ const QuotationPage1 = ({ data }: Props) => {
   const headerBg = "#b71c1c";
   const tableHeaderBg = "#0d2137";
   const borderColor = "#ccc";
+
+  const fullWidthHeader = {
+    background: headerBg,
+    color: "#fff",
+    textAlign: "center" as const,
+    padding: "8px",
+    fontWeight: 700,
+    fontSize: "14px",
+    border: `1px solid ${borderColor}`,
+    width: "100%",
+    boxSizing: "border-box" as const,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "36px",
+  };
 
   return (
     <div
@@ -47,20 +63,7 @@ const QuotationPage1 = ({ data }: Props) => {
       <div style={{ marginBottom: "12px" }}><b>State :</b> {data.customerState}</div>
 
       {/* Product Title */}
-      <div
-        style={{
-          background: headerBg,
-          color: "#fff",
-          textAlign: "center",
-          padding: "8px",
-          fontWeight: 700,
-          fontSize: "14px",
-          border: `1px solid ${borderColor}`,
-          width: "100%",
-          boxSizing: "border-box",
-          display: "block",
-        }}
-      >
+      <div style={fullWidthHeader}>
         {data.productTitle}
       </div>
 
@@ -135,11 +138,11 @@ const QuotationPage1 = ({ data }: Props) => {
 
       {/* Add-On */}
       <div style={{ border: `1px solid ${borderColor}`, marginBottom: "12px" }}>
-        <div style={{ background: headerBg, color: "#fff", textAlign: "center", padding: "6px", fontWeight: 600, fontSize: "12px" }}>
+        <div style={{ ...fullWidthHeader, fontSize: "12px", fontWeight: 600, border: "none", minHeight: "30px" }}>
           Extra Add-On (Optional)
         </div>
         {data.addOns.map((a, i) => (
-          <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "5px 10px", borderBottom: `1px solid ${borderColor}` }}>
+          <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "5px 10px", borderTop: `1px solid ${borderColor}` }}>
             <span>{a.srNo}. {a.name}</span>
             <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
               <span style={{ display: "inline-block", width: "14px", height: "14px", border: "1px solid #999", borderRadius: "2px", background: a.checked ? headerBg : "#fff" }}></span>
@@ -156,11 +159,13 @@ const QuotationPage1 = ({ data }: Props) => {
 
       {/* Special Notes */}
       <div style={{ border: `1px solid ${borderColor}`, borderRadius: "4px", padding: "10px", background: "#fdf5f5" }}>
-        <div style={{ background: tableHeaderBg, color: "#fff", padding: "6px 10px", fontWeight: 700, marginBottom: "8px", borderRadius: "3px", fontSize: "12px" }}>
+        <div style={{ background: tableHeaderBg, color: "#fff", padding: "6px 10px", fontWeight: 700, marginBottom: "8px", borderRadius: "3px", fontSize: "12px", display: "flex", alignItems: "center", justifyContent: "center", minHeight: "28px" }}>
           Special Notes
         </div>
         {data.specialNotes.map((n, i) => (
-          <div key={i} style={{ marginBottom: "4px", fontWeight: i === 3 ? 700 : 400 }}>✔ {n}</div>
+          <div key={i} style={{ marginBottom: "4px", fontWeight: i === 3 ? 700 : 400, display: "flex", alignItems: "center", gap: "6px" }}>
+            <span style={{ color: "#2e7d32", fontWeight: 700, fontSize: "13px" }}>✔</span> {n}
+          </div>
         ))}
       </div>
     </div>
