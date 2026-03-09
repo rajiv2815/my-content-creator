@@ -12,16 +12,17 @@ const QuotationPage2 = ({ data }: Props) => {
     background: headerBg,
     color: "#fff",
     textAlign: "center" as const,
-    padding: "8px",
+    padding: "0 8px",
     fontWeight: 700,
     fontSize: "16px",
+    lineHeight: "1.2",
     border: `1px solid ${borderColor}`,
     width: "100%",
     boxSizing: "border-box" as const,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    minHeight: "36px",
+    height: "36px",
   };
 
   return (
