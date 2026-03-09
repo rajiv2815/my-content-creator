@@ -228,6 +228,10 @@ const AdminPanel = ({ data, onChange }: Props) => {
             ))}
           </Section>
 
+          <Section title="QR Section">
+            <Field label="QR Heading" value={data.qrHeading} onChange={(v) => update({ qrHeading: v })} />
+          </Section>
+
           <Section title="Banking Details">
             <Field label="Bank Name" value={data.bankName} onChange={(v) => update({ bankName: v })} />
             <Field label="Pay To" value={data.payTo} onChange={(v) => update({ payTo: v })} />
