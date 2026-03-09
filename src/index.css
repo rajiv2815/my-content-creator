@@ -17,7 +17,7 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 15%;
 
-    --primary: 35 90% 55%;
+    --primary: 0 75% 45%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 30% 95%;
@@ -26,7 +26,7 @@ All colors MUST be HSL.
     --muted: 210 20% 96%;
     --muted-foreground: 215 15% 47%;
 
-    --accent: 200 60% 40%;
+    --accent: 210 80% 20%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -34,16 +34,16 @@ All colors MUST be HSL.
 
     --border: 214 30% 91%;
     --input: 214 30% 91%;
-    --ring: 35 90% 55%;
+    --ring: 0 75% 45%;
 
     --radius: 0.5rem;
 
-    --quote-header-bg: 35 90% 55%;
+    --quote-header-bg: 0 75% 45%;
     --quote-header-fg: 0 0% 100%;
-    --quote-table-header: 200 60% 30%;
+    --quote-table-header: 210 80% 20%;
     --quote-table-header-fg: 0 0% 100%;
-    --quote-section-bg: 35 85% 50%;
-    --quote-notes-bg: 45 80% 95%;
+    --quote-section-bg: 0 70% 42%;
+    --quote-notes-bg: 0 30% 96%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
