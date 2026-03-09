@@ -103,7 +103,8 @@ export const defaultQuotationData: QuotationData = {
     { srNo: 4, name: "Lithium Battery", price: "₹30,000", checked: false },
   ],
 
-  amountInWords: "Three Lakh Four Thousand Five Hundred Only",
+  amountInWords: "",
+  qrHeading: "Pay to",
 
   specialNotes: [
     "The stair lift carries a Warranty of 12 Months from the Invoice date.",
