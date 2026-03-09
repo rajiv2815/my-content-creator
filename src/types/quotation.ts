@@ -66,11 +66,11 @@ export interface QuotationData {
 }
 
 export const defaultQuotationData: QuotationData = {
-  companyName: "Mobilize Horizons",
-  companyAddress: "D-27/585 GF, 100 Feet Road, Chhatarpur Hills, New Delhi - 110074",
-  companyPhone: "+91-7042586744, 9205256111, 9971993004",
-  companyEmail: "sales@mobilizehorizons.com",
-  companyWeb: "www.mobilizehorizons.com",
+  companyName: "Gajanana Lift",
+  companyAddress: "322/A, South Extension, Part-2, New Delhi-110049",
+  companyPhone: "+91-9911747789, +91-9555264649",
+  companyEmail: "info@gajananalift.com",
+  companyWeb: "www.gajananalift.com",
   logoUrl: "/images/logo.png",
 
   refNo: "MHS156957",
