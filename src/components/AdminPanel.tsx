@@ -181,7 +181,10 @@ const AdminPanel = ({ data, onChange }: Props) => {
           </Section>
 
           <Section title="Amount">
-            <Field label="Amount in Words" value={data.amountInWords} onChange={(v) => update({ amountInWords: v })} />
+            <div>
+              <Label className="text-xs text-muted-foreground">Amount in Words (Auto)</Label>
+              <Input value={data.amountInWords} disabled className="h-8 text-sm bg-muted" />
+            </div>
             <Field label="GST %" value={String(data.gstPercent)} onChange={(v) => update({ gstPercent: Number(v) || 0 })} />
           </Section>
         </TabsContent>
@@ -213,8 +216,10 @@ const AdminPanel = ({ data, onChange }: Props) => {
               <div key={i} className="flex gap-2 items-center">
                 <Input value={a.name} onChange={(e) => updateAddOn(i, "name", e.target.value)} className="h-7 text-xs flex-1" />
                 <Input value={a.price} onChange={(e) => updateAddOn(i, "price", e.target.value)} className="h-7 text-xs w-24" />
+                <Button size="icon" variant="ghost" className="h-7 w-7" onClick={() => removeAddOn(i)}><Trash2 size={12} /></Button>
               </div>
             ))}
+            <Button size="sm" variant="outline" className="w-full h-7 text-xs" onClick={addAddOn}><Plus size={12} className="mr-1" />Add Add-On</Button>
           </Section>
         </TabsContent>
 
