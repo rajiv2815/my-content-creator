@@ -9,6 +9,10 @@ const QuotationPage1 = ({ data }: Props) => {
   const gstAmount = (subTotal * data.gstPercent) / 100;
   const total = subTotal + gstAmount;
 
+  const headerBg = "#b71c1c";
+  const tableHeaderBg = "#0d2137";
+  const borderColor = "#ccc";
+
   return (
     <div
       style={{
@@ -45,13 +49,13 @@ const QuotationPage1 = ({ data }: Props) => {
       {/* Product Title */}
       <div
         style={{
-          background: "hsl(35, 90%, 55%)",
+          background: headerBg,
           color: "#fff",
           textAlign: "center",
           padding: "8px",
           fontWeight: 700,
           fontSize: "14px",
-          borderRadius: "4px 4px 0 0",
+          border: `1px solid ${borderColor}`,
         }}
       >
         {data.productTitle}
@@ -60,7 +64,7 @@ const QuotationPage1 = ({ data }: Props) => {
       {/* Specs + Image */}
       <div
         style={{
-          border: "1px solid #ddd",
+          border: `1px solid ${borderColor}`,
           borderTop: "none",
           display: "flex",
           gap: "12px",
@@ -82,60 +86,60 @@ const QuotationPage1 = ({ data }: Props) => {
       </div>
 
       {/* Product Table */}
-      <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "12px", fontSize: "11px" }}>
+      <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "12px", fontSize: "11px", border: `1px solid ${borderColor}` }}>
         <thead>
-          <tr style={{ background: "hsl(200, 60%, 30%)", color: "#fff" }}>
-            <th style={{ padding: "6px 8px", textAlign: "left", width: "50px" }}>Sr No</th>
-            <th style={{ padding: "6px 8px", textAlign: "left" }}>Product Description</th>
-            <th style={{ padding: "6px 8px", textAlign: "right" }}>Rate Per Unit</th>
-            <th style={{ padding: "6px 8px", textAlign: "center" }}>Qty in Units</th>
-            <th style={{ padding: "6px 8px", textAlign: "right" }}>Amount</th>
+          <tr style={{ background: tableHeaderBg, color: "#fff" }}>
+            <th style={{ padding: "6px 8px", textAlign: "left", width: "50px", border: `1px solid ${borderColor}` }}>Sr No</th>
+            <th style={{ padding: "6px 8px", textAlign: "left", border: `1px solid ${borderColor}` }}>Product Description</th>
+            <th style={{ padding: "6px 8px", textAlign: "right", border: `1px solid ${borderColor}` }}>Rate Per Unit</th>
+            <th style={{ padding: "6px 8px", textAlign: "center", border: `1px solid ${borderColor}` }}>Qty in Units</th>
+            <th style={{ padding: "6px 8px", textAlign: "right", border: `1px solid ${borderColor}` }}>Amount</th>
           </tr>
         </thead>
         <tbody>
           {data.products.map((p, i) => (
-            <tr key={i} style={{ borderBottom: "1px solid #eee" }}>
-              <td style={{ padding: "6px 8px", textAlign: "center" }}>{p.srNo || ""}</td>
-              <td style={{ padding: "6px 8px", fontWeight: i === 0 ? 700 : 400 }}>{p.description}</td>
-              <td style={{ padding: "6px 8px", textAlign: "right" }}>{p.ratePerUnit.toFixed(2)}</td>
-              <td style={{ padding: "6px 8px", textAlign: "center" }}>{p.qty}</td>
-              <td style={{ padding: "6px 8px", textAlign: "right" }}>{p.amount.toFixed(2)}</td>
+            <tr key={i}>
+              <td style={{ padding: "6px 8px", textAlign: "center", border: `1px solid ${borderColor}` }}>{p.srNo || ""}</td>
+              <td style={{ padding: "6px 8px", fontWeight: i === 0 ? 700 : 400, border: `1px solid ${borderColor}` }}>{p.description}</td>
+              <td style={{ padding: "6px 8px", textAlign: "right", border: `1px solid ${borderColor}` }}>{p.ratePerUnit.toFixed(2)}</td>
+              <td style={{ padding: "6px 8px", textAlign: "center", border: `1px solid ${borderColor}` }}>{p.qty}</td>
+              <td style={{ padding: "6px 8px", textAlign: "right", border: `1px solid ${borderColor}` }}>{p.amount.toFixed(2)}</td>
             </tr>
           ))}
-          <tr style={{ borderBottom: "1px solid #eee" }}>
-            <td style={{ padding: "6px 8px" }}></td>
-            <td style={{ padding: "6px 8px", fontWeight: 700 }}>Freight Charge As Per Actual</td>
-            <td colSpan={2} style={{ padding: "6px 8px", textAlign: "center" }}>As per actual</td>
-            <td style={{ padding: "6px 8px" }}></td>
-          </tr>
-          <tr style={{ borderBottom: "1px solid #eee" }}>
-            <td colSpan={3}></td>
-            <td style={{ padding: "6px 8px", fontWeight: 700 }}>Sub Total</td>
-            <td style={{ padding: "6px 8px", textAlign: "right" }}>{subTotal.toFixed(2)}</td>
-          </tr>
-          <tr style={{ borderBottom: "1px solid #eee" }}>
-            <td colSpan={3}></td>
-            <td style={{ padding: "6px 8px", fontWeight: 700 }}>Gst {data.gstPercent}%</td>
-            <td style={{ padding: "6px 8px", textAlign: "right" }}>{gstAmount.toFixed(2)}</td>
+          <tr>
+            <td style={{ padding: "6px 8px", border: `1px solid ${borderColor}` }}></td>
+            <td style={{ padding: "6px 8px", fontWeight: 700, border: `1px solid ${borderColor}` }}>Freight Charge As Per Actual</td>
+            <td colSpan={2} style={{ padding: "6px 8px", textAlign: "center", border: `1px solid ${borderColor}` }}>As per actual</td>
+            <td style={{ padding: "6px 8px", border: `1px solid ${borderColor}` }}></td>
           </tr>
           <tr>
-            <td colSpan={3}></td>
-            <td style={{ padding: "6px 8px", fontWeight: 700, fontSize: "13px" }}>Total</td>
-            <td style={{ padding: "6px 8px", textAlign: "right", fontWeight: 700, fontSize: "13px" }}>{total.toFixed(2)}</td>
+            <td colSpan={3} style={{ border: `1px solid ${borderColor}` }}></td>
+            <td style={{ padding: "6px 8px", fontWeight: 700, border: `1px solid ${borderColor}` }}>Sub Total</td>
+            <td style={{ padding: "6px 8px", textAlign: "right", border: `1px solid ${borderColor}` }}>{subTotal.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td colSpan={3} style={{ border: `1px solid ${borderColor}` }}></td>
+            <td style={{ padding: "6px 8px", fontWeight: 700, border: `1px solid ${borderColor}` }}>Gst {data.gstPercent}%</td>
+            <td style={{ padding: "6px 8px", textAlign: "right", border: `1px solid ${borderColor}` }}>{gstAmount.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td colSpan={3} style={{ border: `1px solid ${borderColor}` }}></td>
+            <td style={{ padding: "6px 8px", fontWeight: 700, fontSize: "13px", border: `1px solid ${borderColor}` }}>Total</td>
+            <td style={{ padding: "6px 8px", textAlign: "right", fontWeight: 700, fontSize: "13px", border: `1px solid ${borderColor}` }}>{total.toFixed(2)}</td>
           </tr>
         </tbody>
       </table>
 
       {/* Add-On */}
-      <div style={{ border: "1px solid #ddd", marginBottom: "12px" }}>
-        <div style={{ background: "hsl(35, 85%, 50%)", color: "#fff", textAlign: "center", padding: "6px", fontWeight: 600, fontSize: "12px" }}>
+      <div style={{ border: `1px solid ${borderColor}`, marginBottom: "12px" }}>
+        <div style={{ background: headerBg, color: "#fff", textAlign: "center", padding: "6px", fontWeight: 600, fontSize: "12px" }}>
           Extra Add-On (Optional)
         </div>
         {data.addOns.map((a, i) => (
-          <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "5px 10px", borderBottom: i < data.addOns.length - 1 ? "1px solid #eee" : "none" }}>
+          <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "5px 10px", borderBottom: `1px solid ${borderColor}` }}>
             <span>{a.srNo}. {a.name}</span>
             <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <span style={{ display: "inline-block", width: "14px", height: "14px", border: "1px solid #999", borderRadius: "2px", background: a.checked ? "hsl(35,90%,55%)" : "#fff" }}></span>
+              <span style={{ display: "inline-block", width: "14px", height: "14px", border: "1px solid #999", borderRadius: "2px", background: a.checked ? headerBg : "#fff" }}></span>
               {a.price}
             </span>
           </div>
@@ -148,8 +152,8 @@ const QuotationPage1 = ({ data }: Props) => {
       </div>
 
       {/* Special Notes */}
-      <div style={{ background: "hsl(45, 80%, 95%)", border: "1px solid #e8d9a0", borderRadius: "4px", padding: "10px" }}>
-        <div style={{ background: "hsl(200, 60%, 30%)", color: "#fff", padding: "6px 10px", fontWeight: 700, marginBottom: "8px", borderRadius: "3px", fontSize: "12px" }}>
+      <div style={{ border: `1px solid ${borderColor}`, borderRadius: "4px", padding: "10px", background: "#fdf5f5" }}>
+        <div style={{ background: tableHeaderBg, color: "#fff", padding: "6px 10px", fontWeight: 700, marginBottom: "8px", borderRadius: "3px", fontSize: "12px" }}>
           Special Notes
         </div>
         {data.specialNotes.map((n, i) => (
