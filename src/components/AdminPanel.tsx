@@ -247,10 +247,6 @@ const AdminPanel = ({ data, onChange }: Props) => {
             <Field label="PAN" value={data.pan} onChange={(v) => update({ pan: v })} />
             <Field label="UPI ID" value={data.upiId} onChange={(v) => update({ upiId: v })} />
             <div>
-              <Label className="text-xs text-muted-foreground">Bank Logo</Label>
-              <Button size="sm" variant="outline" className="w-full h-8 text-xs" onClick={() => handleImageUpload("bankLogo")}>Upload Bank Logo</Button>
-            </div>
-            <div>
               <Label className="text-xs text-muted-foreground">QR Code</Label>
               <Button size="sm" variant="outline" className="w-full h-8 text-xs" onClick={() => handleImageUpload("qrCodeUrl")}>Upload QR Code</Button>
             </div>
