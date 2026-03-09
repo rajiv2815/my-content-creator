@@ -72,9 +72,12 @@ const Index = () => {
 
         <div className="flex-1 overflow-auto p-6 flex flex-col items-center gap-0 bg-muted/50">
           <div ref={printRef}>
-            <QuotationPage1 data={data} />
-            <div className="html2pdf__page-break" style={{ margin: 0, padding: 0 }} />
-            <QuotationPage2 data={data} />
+            <div className="pdf-page">
+              <QuotationPage1 data={data} />
+            </div>
+            <div className="pdf-page pdf-page-break-before">
+              <QuotationPage2 data={data} />
+            </div>
           </div>
         </div>
       </div>
