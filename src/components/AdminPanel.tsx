@@ -104,6 +104,14 @@ const AdminPanel = ({ data, onChange }: Props) => {
     update({ addOns });
   };
 
+  const addAddOn = () => {
+    update({ addOns: [...data.addOns, { srNo: data.addOns.length + 1, name: "", price: "", checked: false }] });
+  };
+
+  const removeAddOn = (i: number) => {
+    update({ addOns: data.addOns.filter((_, idx) => idx !== i) });
+  };
+
   return (
     <div className="h-full overflow-y-auto bg-card p-4" style={{ maxHeight: "100vh" }}>
       <h2 className="text-lg font-bold mb-4 text-foreground">Admin Panel</h2>
