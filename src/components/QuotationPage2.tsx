@@ -8,6 +8,22 @@ const QuotationPage2 = ({ data }: Props) => {
   const headerBg = "#b71c1c";
   const borderColor = "#ccc";
 
+  const fullWidthHeader = {
+    background: headerBg,
+    color: "#fff",
+    textAlign: "center" as const,
+    padding: "8px",
+    fontWeight: 700,
+    fontSize: "16px",
+    border: `1px solid ${borderColor}`,
+    width: "100%",
+    boxSizing: "border-box" as const,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "36px",
+  };
+
   return (
     <div
       style={{
@@ -34,7 +50,7 @@ const QuotationPage2 = ({ data }: Props) => {
       </div>
 
       {/* Gallery Title */}
-      <div style={{ background: headerBg, color: "#fff", padding: "6px 12px", fontWeight: 600, fontSize: "12px", border: `1px solid ${borderColor}`, textAlign: "center" }}>
+      <div style={{ ...fullWidthHeader, fontSize: "12px", fontWeight: 600 }}>
         {data.galleryTitle}
       </div>
 
@@ -46,7 +62,7 @@ const QuotationPage2 = ({ data }: Props) => {
       </div>
 
       {/* Banking Details */}
-      <div style={{ background: headerBg, color: "#fff", textAlign: "center", padding: "8px", fontWeight: 700, fontSize: "16px", border: `1px solid ${borderColor}` }}>
+      <div style={fullWidthHeader}>
         Banking Details
       </div>
       <table style={{ width: "100%", borderCollapse: "collapse", border: `1px solid ${borderColor}`, borderTop: "none" }}>
@@ -90,7 +106,7 @@ const QuotationPage2 = ({ data }: Props) => {
 
             {/* Right - QR Code */}
             <td style={{ width: "50%", padding: "20px", textAlign: "center", verticalAlign: "middle" }}>
-              <div style={{ fontSize: "12px", fontWeight: 700, marginBottom: "4px" }}>Pay to</div>
+              <div style={{ fontSize: "12px", fontWeight: 700, marginBottom: "4px" }}>{data.qrHeading}</div>
               <div style={{ fontWeight: 700, fontSize: "16px", marginBottom: "12px" }}>{data.payTo}</div>
               <div style={{ marginBottom: "8px" }}>
                 <img src={data.qrCodeUrl} alt="QR Code" style={{ width: "140px", height: "140px", margin: "0 auto", border: `1px solid ${borderColor}`, padding: "4px" }} />
