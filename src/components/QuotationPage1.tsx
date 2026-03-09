@@ -56,6 +56,9 @@ const QuotationPage1 = ({ data }: Props) => {
           fontWeight: 700,
           fontSize: "14px",
           border: `1px solid ${borderColor}`,
+          width: "100%",
+          boxSizing: "border-box",
+          display: "block",
         }}
       >
         {data.productTitle}
