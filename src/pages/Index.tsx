@@ -26,24 +26,33 @@ const Index = () => {
   const handleDownloadPDF = async () => {
     if (!printRef.current) return;
 
-    const html2pdf = (await import("html2pdf.js")).default;
-    const opt = {
-      margin: 0,
-      filename: `Quotation_${data.refNo}.pdf`,
-      image: { type: "jpeg" as const, quality: 0.98 },
-      html2canvas: {
+    const [{ jsPDF }, html2canvasModule] = await Promise.all([
+      import("jspdf"),
+      import("html2canvas"),
+    ]);
+    const html2canvas = html2canvasModule.default;
+
+    const pageElements = Array.from(
+      printRef.current.querySelectorAll<HTMLElement>(".pdf-page")
+    );
+    if (!pageElements.length) return;
+
+    const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
+
+    for (let i = 0; i < pageElements.length; i++) {
+      const canvas = await html2canvas(pageElements[i], {
         scale: 2,
         useCORS: true,
-        scrollY: 0,
-      },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" as const },
-      pagebreak: {
-        mode: ["css", "avoid-all"],
-        before: ".pdf-page-break-before",
-      },
-    };
+        backgroundColor: "#ffffff",
+        scrollY: -window.scrollY,
+      });
 
-    html2pdf().set(opt).from(printRef.current).save();
+      const imageData = canvas.toDataURL("image/jpeg", 0.98);
+      if (i > 0) pdf.addPage();
+      pdf.addImage(imageData, "JPEG", 0, 0, 210, 297, undefined, "FAST");
+    }
+
+    pdf.save(`Quotation_${data.refNo}.pdf`);
   };
 
   return (
