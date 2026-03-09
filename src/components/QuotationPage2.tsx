@@ -6,7 +6,6 @@ interface Props {
 
 const QuotationPage2 = ({ data }: Props) => {
   const headerBg = "#b71c1c";
-  const tableHeaderBg = "#0d2137";
   const borderColor = "#ccc";
 
   return (
@@ -35,7 +34,7 @@ const QuotationPage2 = ({ data }: Props) => {
       </div>
 
       {/* Gallery Title */}
-      <div style={{ background: headerBg, color: "#fff", padding: "6px 12px", fontWeight: 600, fontSize: "12px", border: `1px solid ${borderColor}` }}>
+      <div style={{ background: headerBg, color: "#fff", padding: "6px 12px", fontWeight: 600, fontSize: "12px", border: `1px solid ${borderColor}`, textAlign: "center" }}>
         {data.galleryTitle}
       </div>
 
@@ -53,21 +52,8 @@ const QuotationPage2 = ({ data }: Props) => {
       <table style={{ width: "100%", borderCollapse: "collapse", border: `1px solid ${borderColor}`, borderTop: "none" }}>
         <tbody>
           <tr>
-            {/* Left - Pay to + QR */}
-            <td style={{ width: "50%", padding: "20px", textAlign: "center", verticalAlign: "top", borderRight: `1px solid ${borderColor}` }}>
-              <div style={{ marginBottom: "8px" }}>
-                <img src={data.bankLogo} alt="Bank" style={{ height: "40px", objectFit: "contain", margin: "0 auto" }} />
-              </div>
-              <div style={{ fontSize: "11px", color: "#666", marginBottom: "4px" }}>Pay to</div>
-              <div style={{ fontWeight: 700, fontSize: "16px", marginBottom: "12px" }}>{data.payTo}</div>
-              <div style={{ marginBottom: "8px" }}>
-                <img src={data.qrCodeUrl} alt="QR Code" style={{ width: "140px", height: "140px", margin: "0 auto", border: `1px solid ${borderColor}`, padding: "4px" }} />
-              </div>
-              <div style={{ fontSize: "10px", color: "#666" }}>UPI ID - {data.upiId}</div>
-            </td>
-
-            {/* Right - Details Table */}
-            <td style={{ width: "50%", padding: "0", verticalAlign: "top" }}>
+            {/* Left - Bank Details Table */}
+            <td style={{ width: "50%", padding: "0", verticalAlign: "middle", borderRight: `1px solid ${borderColor}` }}>
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <tbody>
                   <tr>
@@ -100,6 +86,16 @@ const QuotationPage2 = ({ data }: Props) => {
                   </tr>
                 </tbody>
               </table>
+            </td>
+
+            {/* Right - QR Code */}
+            <td style={{ width: "50%", padding: "20px", textAlign: "center", verticalAlign: "middle" }}>
+              <div style={{ fontSize: "12px", fontWeight: 700, marginBottom: "4px" }}>Pay to</div>
+              <div style={{ fontWeight: 700, fontSize: "16px", marginBottom: "12px" }}>{data.payTo}</div>
+              <div style={{ marginBottom: "8px" }}>
+                <img src={data.qrCodeUrl} alt="QR Code" style={{ width: "140px", height: "140px", margin: "0 auto", border: `1px solid ${borderColor}`, padding: "4px" }} />
+              </div>
+              <div style={{ fontSize: "10px", color: "#666" }}>UPI ID - {data.upiId}</div>
             </td>
           </tr>
         </tbody>
