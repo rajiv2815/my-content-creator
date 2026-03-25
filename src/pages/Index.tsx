@@ -52,6 +52,24 @@ const Index = () => {
       pdf.addImage(imageData, "JPEG", 0, 0, 210, 297, undefined, "FAST");
     }
 
+    // Add clickable links for email and website on both pages
+    const addLinksToPage = (pageIndex: number) => {
+      pdf.setPage(pageIndex + 1);
+      // Position approximate to top-right header area
+      const emailText = data.companyEmail;
+      const webText = data.companyWeb;
+      const webUrl = webText.startsWith("http") ? webText : `https://${webText}`;
+      
+      // Email link area (approximate position in mm for top-right header)
+      pdf.link(140, 28, 55, 4, { url: `mailto:${emailText}` });
+      // Website link area
+      pdf.link(140, 32, 55, 4, { url: webUrl });
+    };
+
+    for (let i = 0; i < pageElements.length; i++) {
+      addLinksToPage(i);
+    }
+
     pdf.save(`Quotation_${data.refNo}.pdf`);
   };
 

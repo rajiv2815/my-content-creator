@@ -80,7 +80,7 @@ const QuotationPage1 = ({ data }: Props) => {
         }}
       >
         <div style={{ flex: 1 }}>
-          <div style={{ fontWeight: 700, marginBottom: "6px" }}>Bespoke Premium Indoor Stairlift Specification:</div>
+          <div style={{ fontWeight: 700, marginBottom: "6px" }}>{data.specificationTitle || "Bespoke Premium Indoor Stairlift Specification:"}</div>
           {data.specifications.map((s, i) => (
             <div key={i} style={{ marginBottom: "3px" }}>✔ {s}</div>
           ))}

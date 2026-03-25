@@ -30,6 +30,7 @@ export interface QuotationData {
 
   // Product
   productTitle: string;
+  specificationTitle: string;
   specifications: string[];
   productImageUrl: string;
   products: ProductItem[];
@@ -79,6 +80,7 @@ export const defaultQuotationData: QuotationData = {
   customerState: "",
 
   productTitle: "Bespoke Premium Indoor Stairlift - Military Grade Motor",
+  specificationTitle: "Bespoke Premium Indoor Stairlift Specification:",
   specifications: [
     "125 kg load capacity.",
     "Rack and Pinion Drive Method",
