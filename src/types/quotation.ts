@@ -30,6 +30,7 @@ export interface QuotationData {
 
   // Product
   productTitle: string;
+  specificationTitle: string;
   specifications: string[];
   productImageUrl: string;
   products: ProductItem[];

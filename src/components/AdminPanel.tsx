@@ -73,7 +73,8 @@ const AdminPanel = ({ data, onChange }: Props) => {
   };
 
   const addProduct = () => {
-    update({ products: [...data.products, { srNo: data.products.length + 1, description: "", ratePerUnit: 0, qty: 0, amount: 0 }] });
+    const maxSrNo = data.products.reduce((max, p) => Math.max(max, p.srNo || 0), 0);
+    update({ products: [...data.products, { srNo: maxSrNo + 1, description: "", ratePerUnit: 0, qty: 0, amount: 0 }] });
   };
 
   const removeProduct = (i: number) => {
@@ -152,6 +153,7 @@ const AdminPanel = ({ data, onChange }: Props) => {
 
           <Section title="Product Header">
             <Field label="Product Title" value={data.productTitle} onChange={(v) => update({ productTitle: v })} />
+            <Field label="Specification Title" value={data.specificationTitle} onChange={(v) => update({ specificationTitle: v })} />
             <div>
               <Label className="text-xs text-muted-foreground">Product Image</Label>
               <Button size="sm" variant="outline" className="w-full h-8 text-xs" onClick={() => handleImageUpload("productImageUrl")}>
