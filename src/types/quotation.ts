@@ -80,6 +80,7 @@ export const defaultQuotationData: QuotationData = {
   customerState: "",
 
   productTitle: "Bespoke Premium Indoor Stairlift - Military Grade Motor",
+  specificationTitle: "Bespoke Premium Indoor Stairlift Specification:",
   specifications: [
     "125 kg load capacity.",
     "Rack and Pinion Drive Method",
